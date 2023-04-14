@@ -24,9 +24,6 @@ notas_2 = [30, 95, 28, 84, 84, 43, 66, 51, 4, 11, 58, 10, 13, 34, 96, 71, 86, 37
 64, 13, 8, 87, 14, 14, 49, 27, 55, 69, 77, 59, 57, 40, 96, 24, 30, 73,
 95, 19, 47, 15, 31, 39, 15, 74, 33, 57, 10]
 
-
-promedio=lambda a, b, c: (a+b)/c
-
 diccionario = {}
 diccionario_todo={}
 lista_notas=zip(notas_1,notas_2)
@@ -34,16 +31,14 @@ diccionario_todo={k:v for(k,v) in zip(nombres.split(","),lista_notas)}
 
 #inciso A
 print('inciso a')
-print(list(diccionario_todo))
+print(diccionario_todo)
 
 #inciso B
 i=0
 print('inciso b')
-while ((i < len(notas_2))):
-    print(nombres.split(',')[i])
-    print(promedio(notas_1[i],notas_2[i],2))
-    diccionario[nombres.split(',')[i]]=promedio(notas_1[i],notas_2[i],2)
-    i=i+ 1
+promedios=map(lambda a,b:(a+b)/2, notas_1, notas_2)
+diccionario={k:v for(k,v) in zip(nombres.split(","),promedios)}
+print(diccionario)
 #inciso C
 print('inciso c')
 prom_notas= (sum(diccionario.values())/len(notas_2))
